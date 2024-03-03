@@ -1,4 +1,4 @@
-
+-- made by coolmatt72#6707 (coolmatt72) on v3rm aswell as walter !!!#4155 monke hub discord : https://discord.gg/ZmDkXF3Tz7
 local cc = game.Workspace.CurrentCamera
 local udim2 = {}
 local instance = {}
@@ -140,9 +140,9 @@ local keybindallowed = {
 	["Eight"] = "8",
 	["Nine"] = "9",
 	["Zero"] = "0",
-	["Mouse1"] = "M1",
-	["Mouse2"] = "M2",
-	["Mouse3"] = "M3"
+	["Mouse1"] = "MouseButton1",
+	["Mouse2"] = "MouseButton2",
+	["Mouse3"] = "MouseButton3"
 }
 --
 udim2.snew = function(xscale,xoffset,yscale,yoffset,instance)
@@ -1479,13 +1479,13 @@ uis.InputBegan:Connect(function(input)
 	if keybindin and currentkeybind then
 		local character = ""
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
-			character = "MouseButton1"
+			character = "Mouse1"
 		end
 		if input.UserInputType == Enum.UserInputType.MouseButton2 then
-			character = "MouseButton2"
+			character = "Mouse2"
 		end
 		if input.UserInputType == Enum.UserInputType.MouseButton3 then
-			character = "MouseButton3"
+			character = "Mouse3"
 		end
 		local allowed = false
 		for i,v in pairs(keybindallowed) do
