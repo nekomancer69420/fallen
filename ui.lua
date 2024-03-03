@@ -1479,13 +1479,13 @@ uis.InputBegan:Connect(function(input)
 	if keybindin and currentkeybind then
 		local character = ""
 		if input.UserInputType == Enum.UserInputType.MouseButton1 then
-			character = "Mouse1"
+			character = "MouseButton1"
 		end
 		if input.UserInputType == Enum.UserInputType.MouseButton2 then
-			character = "Mouse2"
+			character = "MouseButton2"
 		end
 		if input.UserInputType == Enum.UserInputType.MouseButton3 then
-			character = "Mouse3"
+			character = "MouseButton3"
 		end
 		local allowed = false
 		for i,v in pairs(keybindallowed) do
