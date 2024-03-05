@@ -18,7 +18,7 @@ env.ESPEnabled = {
     TrashCan = true,
 }
 
-function itemesp(a, b)
+local function itemesp(a, b)
     local item = Drawing.new("Text")
     item.Visible = false
     item.Outline = true
