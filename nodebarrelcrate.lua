@@ -1,5 +1,31 @@
+
 local rs = game:GetService("RunService")
 local camera = workspace.CurrentCamera
+getgenv().Globals = {}
+local env = getgenv().Globals
+env.Aimbot = {
+    Enabled = false,
+	TeamCheck = false,
+	IsAlive = true,
+	VisibleCheck = false,
+	Sensitivity = 0,
+	KeyBind = "E",
+	Toggled = false,
+	TargetPart = "Head",
+}
+env.ESPEnabled = {
+    NameESP = false,
+    Iron = true,
+	Sulfur = true,
+	Stone = true,
+    LockedWoodenCrate = true,
+    LockedSteelCrate = true,
+    LockedMetalCrate = true,
+    FoodCrate = true,
+    WoodenCrate = true,
+    OilBarrel = true,
+    TrashCan = true,
+}
 
 function itemesp(a, b)
     local item = Drawing.new("Text")
@@ -17,17 +43,17 @@ function itemesp(a, b)
                 if a.Name == "Stone_Node" then
                     item.Position = Vector2.new(item_pos.X, item_pos.Y)
                     item.Text = "Stone"
-                    item.Visible = true
+                    item.Visible = env.ESPEnabled.Stone
                     item.Color = Color3.fromRGB(128, 128, 128)
                 elseif a.Name == "Phosphate_Node" then
                     item.Position = Vector2.new(item_pos.X, item_pos.Y)
                     item.Text = "Sulfur"
-                    item.Visible = true
+                    item.Visible = env.ESPEnabled.Sulfur
                     item.Color = Color3.fromRGB(255, 255, 0)
                 elseif a.Name == "Metal_Node" then
                     item.Position = Vector2.new(item_pos.X, item_pos.Y)
                     item.Text = "Iron"
-                    item.Visible = true
+                    item.Visible = env.ESPEnabled.Iron
                     item.Color = Color3.fromRGB(101, 67, 33)
                 end 
             else
@@ -39,37 +65,37 @@ function itemesp(a, b)
                 if string.match(b.Name, "Locked Metal Crate") then
                     item.Position = Vector2.new(item_pos.X, item_pos.Y)
                     item.Text = "Locked Metal Crate"
-                    item.Visible = true
+                    item.Visible = env.ESPEnabled.LockedMetalCrate
                     item.Color = Color3.fromRGB(128, 128, 128)
                 elseif string.match(b.Name, "Locked Steel Crate") then
                     item.Position = Vector2.new(item_pos.X, item_pos.Y)
                     item.Text = "Locked Steel Crate"
-                    item.Visible = true
+                    item.Visible = env.ESPEnabled.LockedSteelCrate
                     item.Color = Color3.fromRGB(0, 0, 0)
                 elseif string.match(b.Name, "Locked Wooden Crate") then
                     item.Position = Vector2.new(item_pos.X, item_pos.Y)
                     item.Text = "Locked Wooden Crate"
-                    item.Visible = true
+                    item.Visible = env.ESPEnabled.LockedWoodenCrate
                     item.Color = Color3.fromRGB(101, 67, 33)
                 elseif string.match(b.Name, "Wooden Crate") then
                     item.Position = Vector2.new(item_pos.X, item_pos.Y)
                     item.Text = "Wooden Crate"
-                    item.Visible = true
+                    item.Visible = env.ESPEnabled.WoodenCrate
                     item.Color = Color3.fromRGB(101, 67, 33)
                 elseif string.match(b.Name, "Trash Can") then
                     item.Position = Vector2.new(item_pos.X, item_pos.Y)
                     item.Text = "Trash Can"
-                    item.Visible = true
+                    item.Visible = env.ESPEnabled.TrashCan
                     item.Color = Color3.fromRGB(128, 128, 128)
                 elseif string.match(b.Name, "Food Crate")  then
                     item.Position = Vector2.new(item_pos.X, item_pos.Y)
                     item.Text = "Food Crate"
-                    item.Visible = true
+                    item.Visible = env.ESPEnabled.FoodCrate
                     item.Color = Color3.fromRGB(255, 255, 0)
                 elseif string.match(b.Name, "Oil Barrel") then
                     item.Position = Vector2.new(item_pos.X, item_pos.Y)
                     item.Text = "Oil Barrel"
-                    item.Visible = true
+                    item.Visible = env.ESPEnabled.OilBarrel
                     item.Color = Color3.fromRGB(255, 0, 0)
                 end
             else
