@@ -83,7 +83,7 @@ function itemesp(a, b)
     end)
 end
 
-local function processLonersBase(base)
+local function processObject(base)
     if base:FindFirstChild(base.Name) then
         local count = 1
         for _, child in ipairs(base:GetChildren()) do
@@ -108,14 +108,14 @@ workspace.Nodes.ChildAdded:Connect(function(node)
     end
 end)
 
-for _, lonersBase in ipairs(workspace.Bases.Loners:GetChildren()) do
-    if lonersBase.Name == "Locked Metal Crate" or lonersBase.Name == "Locked Steel Crate" or lonersBase.Name == "Locked Wooden Crate" or lonersBase.Name == "Wooden Crate" or lonersBase.Name == "Trash Can" or lonersBase.Name == "Food Crate" or lonersBase.Name == "Oil Barrel" then
-        processLonersBase(lonersBase)
+for _, object in ipairs(workspace.Bases.Loners:GetChildren()) do
+    if object.Name == "Locked Metal Crate" or object.Name == "Locked Steel Crate" or object.Name == "Locked Wooden Crate" or object.Name == "Wooden Crate" or object.Name == "Trash Can" or object.Name == "Food Crate" or object.Name == "Oil Barrel" then
+        processObject(object)
     end
 end
 
-workspace.Bases.Loners.ChildAdded:Connect(function(lonersBase)
-    if lonersBase.Name == "Locked Metal Crate" or lonersBase.Name == "Locked Steel Crate" or lonersBase.Name == "Locked Wooden Crate" or lonersBase.Name == "Wooden Crate" or lonersBase.Name == "Trash Can" or lonersBase.Name == "Food Crate" or lonersBase.Name == "Oil Barrel" then
-        processLonersBase(lonersBase)
+workspace.Bases.Loners.ChildAdded:Connect(function(object)
+    if object.Name == "Locked Metal Crate" or object.Name == "Locked Steel Crate" or object.Name == "Locked Wooden Crate" or object.Name == "Wooden Crate" or object.Name == "Trash Can" or object.Name == "Food Crate" or object.Name == "Oil Barrel" then
+        processObject(object)
     end                     
 end)
