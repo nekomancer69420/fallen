@@ -3,16 +3,7 @@ local rs = game:GetService("RunService")
 local camera = workspace.CurrentCamera
 getgenv().Globals = {}
 local env = getgenv().Globals
-env.Aimbot = {
-    Enabled = false,
-	TeamCheck = false,
-	IsAlive = true,
-	VisibleCheck = false,
-	Sensitivity = 0,
-	KeyBind = "E",
-	Toggled = false,
-	TargetPart = "Head",
-}
+
 env.ESPEnabled = {
     NameESP = false,
     Iron = true,
