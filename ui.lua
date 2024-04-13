@@ -5,14 +5,14 @@ local library = {
 }
 
 -- Services
-local players = game:GetService("Players")
-local uis = game:GetService("UserInputService")
-local runservice = game:GetService("RunService")
-local tweenservice = game:GetService("TweenService")
+local players = cloneref(game:GetService("Players"))
+local uis = cloneref(game:GetService("UserInputService"))
+local runservice = cloneref(game:GetService("RunService"))
+local tweenservice = cloneref(game:GetService("TweenService"))
 local marketplaceservice = game:GetService("MarketplaceService")
-local textservice = game:GetService("TextService")
+local textservice = cloneref(game:GetService("TextService"))
 local coregui = cloneref(game:GetService("CoreGui"))
-local httpservice = game:GetService("HttpService")
+local httpservice = cloneref(game:GetService("HttpService"))
 
 local player = players.LocalPlayer
 local mouse = player:GetMouse()
