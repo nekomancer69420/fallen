@@ -78,7 +78,7 @@ function library:CreateWatermark(name, position)
     watermark.text = " " .. name:gsub("{game}", gamename):gsub("{fps}", "0 FPS") .. " "
 
     watermark.main = Instance.new("ScreenGui", coregui)
-    watermark.main.Name = "DropDownFullscreenFrame"
+    watermark.main.Name = "Watermark"
     if syn then
         syn.protect_gui(watermark.main)
     end
@@ -229,7 +229,7 @@ function library:CreateWindow(name, size, hidebutton)
     end
 
     window.Main = Instance.new("ScreenGui", coregui)
-    window.Main.Name = "DropDownFullscreenFrame"
+    window.Main.Name = name
     window.Main.DisplayOrder = 15
     if syn then
         syn.protect_gui(window.Main)
