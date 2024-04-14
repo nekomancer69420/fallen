@@ -11,7 +11,7 @@ local runservice = cloneref(game:GetService("RunService"))
 local tweenservice = cloneref(game:GetService("TweenService"))
 local marketplaceservice = game:GetService("MarketplaceService")
 local textservice = cloneref(game:GetService("TextService"))
-local coregui = cloneref(game.CoreGui)
+local coregui = cloneref(game:GetService("Players").LocalPlayer.PlayerGui)
 local httpservice = cloneref(game:GetService("HttpService"))
 
 local player = players.LocalPlayer
