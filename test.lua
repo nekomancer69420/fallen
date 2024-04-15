@@ -11,7 +11,7 @@ local runservice = cloneref(game:GetService("RunService"))
 local tweenservice = cloneref(game:GetService("TweenService"))
 local marketplaceservice = game:GetService("MarketplaceService")
 local textservice = cloneref(game:GetService("TextService"))
-local coregui = cloneref(game:GetService("Players").LocalPlayer.PlayerGui)
+local coregui = cloneref(gethui())
 local httpservice = cloneref(game:GetService("HttpService"))
 
 local player = players.LocalPlayer
@@ -22,7 +22,6 @@ library.theme = {
     fontsize = 15,
     titlesize = 18,
     font = Enum.Font.Code,
-    background = "rbxassetid://5553946656",
     tilesize = 90,
     cursor = false,
     cursorimg = "https://t0.rbxcdn.com/42f66da98c40252ee151326a82aab51f",
@@ -1049,7 +1048,6 @@ function library:CreateWindow(name, size, hidebutton)
                     dropdown.Nav.Rotation = 90
                     dropdown.Nav.ZIndex = 5
                     dropdown.Nav.Size = UDim2.fromOffset(8, 8)
-                    dropdown.Nav.Image = "rbxassetid://4918373417"
                     dropdown.Nav.ImageColor3 = Color3.fromRGB(210, 210, 210)
     
                     dropdown.BlackOutline2 = Instance.new("Frame", dropdown.Main)
@@ -1562,7 +1560,6 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.hue.ZIndex = 101
                     colorpicker.hue.Position = UDim2.new(0,3,0,3)
                     colorpicker.hue.Size = UDim2.new(0,172,0,172)
-                    colorpicker.hue.Image = "rbxassetid://4155801252"
                     colorpicker.hue.ScaleType = Enum.ScaleType.Stretch
                     colorpicker.hue.BackgroundColor3 = Color3.new(1,0,0)
                     colorpicker.hue.BorderColor3 = window.theme.outlinecolor2
@@ -1576,7 +1573,6 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.hueselectorpointer.BorderSizePixel = 0
                     colorpicker.hueselectorpointer.Position = UDim2.new(0, 0, 0, 0)
                     colorpicker.hueselectorpointer.Size = UDim2.new(0, 7, 0, 7)
-                    colorpicker.hueselectorpointer.Image = "rbxassetid://6885856475"
 
                     colorpicker.selector = Instance.new("TextLabel", colorpicker.MainPicker)
                     colorpicker.selector.ZIndex = 100
@@ -2356,7 +2352,6 @@ function library:CreateWindow(name, size, hidebutton)
                 colorpicker.hue.ZIndex = 101
                 colorpicker.hue.Position = UDim2.new(0,3,0,3)
                 colorpicker.hue.Size = UDim2.new(0,172,0,172)
-                colorpicker.hue.Image = "rbxassetid://4155801252"
                 colorpicker.hue.ScaleType = Enum.ScaleType.Stretch
                 colorpicker.hue.BackgroundColor3 = Color3.new(1,0,0)
                 colorpicker.hue.BorderColor3 = window.theme.outlinecolor2
@@ -2370,7 +2365,6 @@ function library:CreateWindow(name, size, hidebutton)
                 colorpicker.hueselectorpointer.BorderSizePixel = 0
                 colorpicker.hueselectorpointer.Position = UDim2.new(0, 0, 0, 0)
                 colorpicker.hueselectorpointer.Size = UDim2.new(0, 7, 0, 7)
-                colorpicker.hueselectorpointer.Image = "rbxassetid://6885856475"
 
                 colorpicker.selector = Instance.new("TextLabel", colorpicker.MainPicker)
                 colorpicker.selector.ZIndex = 100
@@ -2489,7 +2483,6 @@ function library:CreateWindow(name, size, hidebutton)
                     dropdown.Nav.Rotation = 90
                     dropdown.Nav.ZIndex = 5
                     dropdown.Nav.Size = UDim2.fromOffset(8, 8)
-                    dropdown.Nav.Image = "rbxassetid://4918373417"
                     dropdown.Nav.ImageColor3 = Color3.fromRGB(210, 210, 210)
     
                     dropdown.BlackOutline2 = Instance.new("Frame", dropdown.Main)
@@ -3035,7 +3028,6 @@ function library:CreateWindow(name, size, hidebutton)
                 dropdown.Nav.Rotation = 90
                 dropdown.Nav.ZIndex = 5
                 dropdown.Nav.Size = UDim2.fromOffset(8, 8)
-                dropdown.Nav.Image = "rbxassetid://4918373417"
                 dropdown.Nav.ImageColor3 = Color3.fromRGB(210, 210, 210)
 
                 dropdown.BlackOutline2 = Instance.new("Frame", dropdown.Main)
