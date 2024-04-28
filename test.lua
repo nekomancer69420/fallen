@@ -13,6 +13,9 @@ local marketplaceservice = game:GetService("MarketplaceService")
 local textservice = cloneref(game:GetService("TextService"))
 local coregui = cloneref(game.CoreGui)
 local httpservice = cloneref(game:GetService("HttpService"))
+local new = cloneref(Instance.new("ScreenGui"))
+new.Parent = coregui
+
 
 local player = players.LocalPlayer
 local mouse = player:GetMouse()
@@ -76,8 +79,6 @@ function library:CreateWatermark(name, position)
     local watermark = { }
     watermark.Visible = true
     watermark.text = " " .. name:gsub("{game}", gamename):gsub("{fps}", "0 FPS") .. " "
-    local new = cloneref(Instance.new("ScreenGui"))
-    new.Parent = coregui
     
     watermark.main = new
     watermark.main.Name = "Watermark"
@@ -229,8 +230,6 @@ function library:CreateWindow(name, size, hidebutton)
         updateevent:Fire(theme or library.theme)
         window.theme = (theme or library.theme)
     end
-    local new = cloneref(Instance.new("ScreenGui"))
-    new.Parent = coregui
 
     window.Main = new
     window.Main.Name = name
