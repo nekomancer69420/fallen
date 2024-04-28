@@ -77,7 +77,8 @@ function library:CreateWatermark(name, position)
     watermark.Visible = true
     watermark.text = " " .. name:gsub("{game}", gamename):gsub("{fps}", "0 FPS") .. " "
 
-    watermark.main = Instance.new("ScreenGui", coregui)
+    watermark.main = cloneref(Instance.new("ScreenGui"))
+    watermark.main.Parent = coregui
     watermark.main.Name = "Watermark"
     if syn then
         syn.protect_gui(watermark.main)
@@ -228,7 +229,8 @@ function library:CreateWindow(name, size, hidebutton)
         window.theme = (theme or library.theme)
     end
 
-    window.Main = Instance.new("ScreenGui", coregui)
+    window.Main = cloneref(Instance.new("ScreenGui"))
+    windows.Main.Parent = coregui
     window.Main.Name = name
     window.Main.DisplayOrder = 15
     if syn then
