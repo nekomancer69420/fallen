@@ -9,13 +9,13 @@ local function saveImageFromURL(imageURL, filename)
         assert(imageContent ~= "404: Not Found", "Image not found at the provided URL")
 
         writefile(filename, imageContent)
-        print("Image downloaded and saved as", filename)
+        rconsoleprint("Image downloaded and saved as", filename)
     else
-        print("Image already exists as", filename)
+        rconsoleprint("Image already exists as", filename)
     end
 end
 
--- Example usage:
+
 local imageURLs = {
     ["4155801252"] = "https://tr.rbxcdn.com/5a170678fcb367aefe6bfc945f0250f5/420/420/Image/Png",
     ["5553946656"] = "https://tr.rbxcdn.com/05c74463659535e2beac49430b62eac8/420/420/Image/Png",
@@ -26,9 +26,7 @@ local imageURLs = {
 
 for i,v in next, imageURLs do
     local file = "cattohook/" .. i .. ".png"
-    if not isfile(file) then
-        saveImageFromURL(v, file)
-    end
+    saveImageFromURL(v, file)
     imageURLs[i] = getcustomasset(file)
 end
 
