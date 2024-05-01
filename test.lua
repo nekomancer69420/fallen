@@ -28,7 +28,6 @@ for i,v in next, images do
     local file = "cattohook/" .. i .. ".png"
     saveImageFromURL(v, file)
     images[i] = getcustomasset(file)
-    print(images[i])
 end
 
 
@@ -1086,7 +1085,6 @@ function library:CreateWindow(name, size, hidebutton)
                     dropdown.Nav.ZIndex = 5
                     dropdown.Nav.Size = UDim2.fromOffset(8, 8)
                     dropdown.Nav.Image = images["4918373417"]
-                    print(dropdown.Nav.Image)
                     dropdown.Nav.ImageColor3 = Color3.fromRGB(210, 210, 210)
     
                     dropdown.BlackOutline2 = Instance.new("Frame", dropdown.Main)
