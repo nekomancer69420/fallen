@@ -1,4 +1,37 @@
--- insert troll face, memcorruptv2
+if not isfile("cattohook") then makefolder("cattohook") end
+local function saveImageFromURL(imageURL, filename)
+    if not isfile(filename) then
+        local success, imageContent = pcall(function()
+            return game:HttpGet(imageURL, true)
+        end)
+        
+        assert(success, imageContent)
+        assert(imageContent ~= "404: Not Found", "Image not found at the provided URL")
+
+        writefile(filename, imageContent)
+        rconsoleprint("Image downloaded and saved as", filename)
+    else
+        rconsoleprint("Image already exists as", filename)
+    end
+end
+
+
+local images = {
+    ["4155801252"] = "https://tr.rbxcdn.com/5a170678fcb367aefe6bfc945f0250f5/420/420/Image/Png",
+    ["5553946656"] = "https://tr.rbxcdn.com/05c74463659535e2beac49430b62eac8/420/420/Image/Png",
+    ["4918373417"] = "https://tr.rbxcdn.com/398472dd407b69a5bbaacb6f50b37ff2/420/420/Image/Png",
+    ["6885856475"] = "https://tr.rbxcdn.com/ff80638cc774f5d2f5ce3ad59ec9660f/420/420/Image/Png",
+}
+
+
+for i,v in next, images do
+    local file = "cattohook/" .. i .. ".png"
+    saveImageFromURL(v, file)
+    images[i] = getcustomasset(file)
+    print(images[i])
+end
+
+
 local library = { 
 	flags = { }, 
 	items = { } 
@@ -13,6 +46,9 @@ local marketplaceservice = game:GetService("MarketplaceService")
 local textservice = cloneref(game:GetService("TextService"))
 local coregui = cloneref(game.CoreGui)
 local httpservice = cloneref(game:GetService("HttpService"))
+local new = cloneref(Instance.new("ScreenGui"))
+new.Parent = coregui
+
 
 local player = players.LocalPlayer
 local mouse = player:GetMouse()
@@ -22,8 +58,10 @@ library.theme = {
     fontsize = 15,
     titlesize = 18,
     font = Enum.Font.Code,
+    background = images["5553946656"],
     tilesize = 90,
     cursor = false,
+    cursorimg = "https://t0.rbxcdn.com/42f66da98c40252ee151326a82aab51f",
     backgroundcolor = Color3.fromRGB(20, 20, 20),
     tabstextcolor = Color3.fromRGB(240, 240, 240),
     bordercolor = Color3.fromRGB(60, 60, 60),
@@ -74,8 +112,8 @@ function library:CreateWatermark(name, position)
     local watermark = { }
     watermark.Visible = true
     watermark.text = " " .. name:gsub("{game}", gamename):gsub("{fps}", "0 FPS") .. " "
-
-    watermark.main = cloneref(Instance.new("ScreenGui", coregui))
+    
+    watermark.main = new
     watermark.main.Name = "Watermark"
     if syn then
         syn.protect_gui(watermark.main)
@@ -226,7 +264,7 @@ function library:CreateWindow(name, size, hidebutton)
         window.theme = (theme or library.theme)
     end
 
-    window.Main = cloneref(Instance.new("ScreenGui", coregui))
+    window.Main = new
     window.Main.Name = name
     window.Main.DisplayOrder = 15
     if syn then
@@ -1047,6 +1085,8 @@ function library:CreateWindow(name, size, hidebutton)
                     dropdown.Nav.Rotation = 90
                     dropdown.Nav.ZIndex = 5
                     dropdown.Nav.Size = UDim2.fromOffset(8, 8)
+                    dropdown.Nav.Image = images["4918373417"]
+                    print(dropdown.Nav.Image)
                     dropdown.Nav.ImageColor3 = Color3.fromRGB(210, 210, 210)
     
                     dropdown.BlackOutline2 = Instance.new("Frame", dropdown.Main)
@@ -1559,6 +1599,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.hue.ZIndex = 101
                     colorpicker.hue.Position = UDim2.new(0,3,0,3)
                     colorpicker.hue.Size = UDim2.new(0,172,0,172)
+                    colorpicker.hue.Image = images["4155801252"]
                     colorpicker.hue.ScaleType = Enum.ScaleType.Stretch
                     colorpicker.hue.BackgroundColor3 = Color3.new(1,0,0)
                     colorpicker.hue.BorderColor3 = window.theme.outlinecolor2
@@ -1572,6 +1613,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.hueselectorpointer.BorderSizePixel = 0
                     colorpicker.hueselectorpointer.Position = UDim2.new(0, 0, 0, 0)
                     colorpicker.hueselectorpointer.Size = UDim2.new(0, 7, 0, 7)
+                    colorpicker.hueselectorpointer.Image = images["6885856475"]
 
                     colorpicker.selector = Instance.new("TextLabel", colorpicker.MainPicker)
                     colorpicker.selector.ZIndex = 100
@@ -2351,6 +2393,7 @@ function library:CreateWindow(name, size, hidebutton)
                 colorpicker.hue.ZIndex = 101
                 colorpicker.hue.Position = UDim2.new(0,3,0,3)
                 colorpicker.hue.Size = UDim2.new(0,172,0,172)
+                colorpicker.hue.Image = images["4155801252"]
                 colorpicker.hue.ScaleType = Enum.ScaleType.Stretch
                 colorpicker.hue.BackgroundColor3 = Color3.new(1,0,0)
                 colorpicker.hue.BorderColor3 = window.theme.outlinecolor2
@@ -2364,6 +2407,7 @@ function library:CreateWindow(name, size, hidebutton)
                 colorpicker.hueselectorpointer.BorderSizePixel = 0
                 colorpicker.hueselectorpointer.Position = UDim2.new(0, 0, 0, 0)
                 colorpicker.hueselectorpointer.Size = UDim2.new(0, 7, 0, 7)
+                colorpicker.hueselectorpointer.Image = images["6885856475"]
 
                 colorpicker.selector = Instance.new("TextLabel", colorpicker.MainPicker)
                 colorpicker.selector.ZIndex = 100
@@ -2482,6 +2526,7 @@ function library:CreateWindow(name, size, hidebutton)
                     dropdown.Nav.Rotation = 90
                     dropdown.Nav.ZIndex = 5
                     dropdown.Nav.Size = UDim2.fromOffset(8, 8)
+                    dropdown.Nav.Image = images["4918373417"]
                     dropdown.Nav.ImageColor3 = Color3.fromRGB(210, 210, 210)
     
                     dropdown.BlackOutline2 = Instance.new("Frame", dropdown.Main)
@@ -3027,7 +3072,7 @@ function library:CreateWindow(name, size, hidebutton)
                 dropdown.Nav.Rotation = 90
                 dropdown.Nav.ZIndex = 5
                 dropdown.Nav.Size = UDim2.fromOffset(8, 8)
-                dropdown.Nav.Image = "rbxassetid://4918373417"
+                dropdown.Nav.Image = images["4918373417"]
                 dropdown.Nav.ImageColor3 = Color3.fromRGB(210, 210, 210)
 
                 dropdown.BlackOutline2 = Instance.new("Frame", dropdown.Main)
