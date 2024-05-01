@@ -16,7 +16,7 @@ local function saveImageFromURL(imageURL, filename)
 end
 
 
-local imageURLs = {
+local images = {
     ["4155801252"] = "https://tr.rbxcdn.com/5a170678fcb367aefe6bfc945f0250f5/420/420/Image/Png",
     ["5553946656"] = "https://tr.rbxcdn.com/05c74463659535e2beac49430b62eac8/420/420/Image/Png",
     ["4918373417"] = "https://tr.rbxcdn.com/398472dd407b69a5bbaacb6f50b37ff2/420/420/Image/Png",
@@ -24,10 +24,10 @@ local imageURLs = {
 }
 
 
-for i,v in next, imageURLs do
+for i,v in next, images do
     local file = "cattohook/" .. i .. ".png"
     saveImageFromURL(v, file)
-    imageURLs[i] = getcustomasset(file)
+    images[i] = getcustomasset(file)
 end
 
 
@@ -57,7 +57,7 @@ library.theme = {
     fontsize = 15,
     titlesize = 18,
     font = Enum.Font.Code,
-    background = imageURLs["5553946656"],
+    background = images["5553946656"],
     tilesize = 90,
     cursor = false,
     cursorimg = "https://t0.rbxcdn.com/42f66da98c40252ee151326a82aab51f",
@@ -1084,7 +1084,7 @@ function library:CreateWindow(name, size, hidebutton)
                     dropdown.Nav.Rotation = 90
                     dropdown.Nav.ZIndex = 5
                     dropdown.Nav.Size = UDim2.fromOffset(8, 8)
-                    dropdown.Nav.Image = imageURLs["4918373417"]
+                    dropdown.Nav.Image = images["4918373417"]
                     dropdown.Nav.ImageColor3 = Color3.fromRGB(210, 210, 210)
     
                     dropdown.BlackOutline2 = Instance.new("Frame", dropdown.Main)
@@ -1597,7 +1597,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.hue.ZIndex = 101
                     colorpicker.hue.Position = UDim2.new(0,3,0,3)
                     colorpicker.hue.Size = UDim2.new(0,172,0,172)
-                    colorpicker.hue.Image = imageURLs{"4155801252"}
+                    colorpicker.hue.Image = images["4155801252"]
                     colorpicker.hue.ScaleType = Enum.ScaleType.Stretch
                     colorpicker.hue.BackgroundColor3 = Color3.new(1,0,0)
                     colorpicker.hue.BorderColor3 = window.theme.outlinecolor2
@@ -1611,7 +1611,7 @@ function library:CreateWindow(name, size, hidebutton)
                     colorpicker.hueselectorpointer.BorderSizePixel = 0
                     colorpicker.hueselectorpointer.Position = UDim2.new(0, 0, 0, 0)
                     colorpicker.hueselectorpointer.Size = UDim2.new(0, 7, 0, 7)
-                    colorpicker.hueselectorpointer.Image = imageURLs["6885856475"]
+                    colorpicker.hueselectorpointer.Image = images["6885856475"]
 
                     colorpicker.selector = Instance.new("TextLabel", colorpicker.MainPicker)
                     colorpicker.selector.ZIndex = 100
@@ -2391,7 +2391,7 @@ function library:CreateWindow(name, size, hidebutton)
                 colorpicker.hue.ZIndex = 101
                 colorpicker.hue.Position = UDim2.new(0,3,0,3)
                 colorpicker.hue.Size = UDim2.new(0,172,0,172)
-                colorpicker.hue.Image = imageURLs["4155801252"]
+                colorpicker.hue.Image = images["4155801252"]
                 colorpicker.hue.ScaleType = Enum.ScaleType.Stretch
                 colorpicker.hue.BackgroundColor3 = Color3.new(1,0,0)
                 colorpicker.hue.BorderColor3 = window.theme.outlinecolor2
@@ -2405,7 +2405,7 @@ function library:CreateWindow(name, size, hidebutton)
                 colorpicker.hueselectorpointer.BorderSizePixel = 0
                 colorpicker.hueselectorpointer.Position = UDim2.new(0, 0, 0, 0)
                 colorpicker.hueselectorpointer.Size = UDim2.new(0, 7, 0, 7)
-                colorpicker.hueselectorpointer.Image = imageURLs["6885856475"]
+                colorpicker.hueselectorpointer.Image = images["6885856475"]
 
                 colorpicker.selector = Instance.new("TextLabel", colorpicker.MainPicker)
                 colorpicker.selector.ZIndex = 100
@@ -2524,7 +2524,7 @@ function library:CreateWindow(name, size, hidebutton)
                     dropdown.Nav.Rotation = 90
                     dropdown.Nav.ZIndex = 5
                     dropdown.Nav.Size = UDim2.fromOffset(8, 8)
-                    dropdown.Nav.Image = imageURLs["4918373417"]
+                    dropdown.Nav.Image = images["4918373417"]
                     dropdown.Nav.ImageColor3 = Color3.fromRGB(210, 210, 210)
     
                     dropdown.BlackOutline2 = Instance.new("Frame", dropdown.Main)
@@ -3070,7 +3070,7 @@ function library:CreateWindow(name, size, hidebutton)
                 dropdown.Nav.Rotation = 90
                 dropdown.Nav.ZIndex = 5
                 dropdown.Nav.Size = UDim2.fromOffset(8, 8)
-                dropdown.Nav.Image = imageURLs["4918373417"]
+                dropdown.Nav.Image = images["4918373417"]
                 dropdown.Nav.ImageColor3 = Color3.fromRGB(210, 210, 210)
 
                 dropdown.BlackOutline2 = Instance.new("Frame", dropdown.Main)
