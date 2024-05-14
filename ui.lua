@@ -2989,7 +2989,13 @@ function library:CreateWindow(name, size, hidebutton)
                         end
                     end
                 end)
-                
+                local c; c = coroutine.wrap(function()
+                    runservice.RenderStepped:connect(function()
+                        if not uis:IsKeyDown(keybind.value) then
+                            pcall(keybind.callback)
+                        end
+                    end)
+                end)()
                 
                 sector:FixSize()
                 table.insert(library.items, keybind)
