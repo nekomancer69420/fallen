@@ -28,7 +28,7 @@ for i,v in next, images do
     images[i] = getcustomasset(file)
 end
 
-
+getgenv().Holding = true
 
 local library = { 
 	flags = { }, 
@@ -2988,8 +2988,9 @@ function library:CreateWindow(name, size, hidebutton)
                         end
                     end
                 end)
+
                 uis.InputEnded:Connect(function(input, gameProcessed)
-                    if not gameProcessed and Settings.Hold then
+                    if not gameProcessed and Holding then
                         if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
                             pcall(keybind.callback)
                         end
