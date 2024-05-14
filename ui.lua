@@ -1025,6 +1025,7 @@ function library:CreateWindow(name, size, hidebutton)
                             end
                         end
                     end)
+                    
 
                     table.insert(library.items, keybind)
                     return keybind
@@ -2987,7 +2988,13 @@ function library:CreateWindow(name, size, hidebutton)
                         end
                     end
                 end)
-
+                uis.InputEnded:Connect(function(input, gameProcessed)
+                    if not gameProcessed and Settings.Hold then
+                        if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
+                            pcall(keybind.callback)
+                        end
+                    end
+                end)
                 sector:FixSize()
                 table.insert(library.items, keybind)
                 return keybind
