@@ -2983,13 +2983,11 @@ function library:CreateWindow(name, size, hidebutton)
                             end
                         else
                             if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
-                                print("hey i workedd")
                                 pcall(keybind.callback)
                             end
                         end
                     end
                 end)
-
                 uis.InputEnded:Connect(function(input, gameProcessed)
                     if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
                         print("hey i worked")
@@ -2997,6 +2995,7 @@ function library:CreateWindow(name, size, hidebutton)
                         
                     end
                 end)
+                
                 sector:FixSize()
                 table.insert(library.items, keybind)
                 return keybind
