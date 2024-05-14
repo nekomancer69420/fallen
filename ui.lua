@@ -2972,6 +2972,7 @@ function library:CreateWindow(name, size, hidebutton)
 
                 uis.InputBegan:Connect(function(input, gameProcessed)
                     if not gameProcessed then
+                        
                         if keybind.Bind.Text == "[...]" then
                             keybind.Bind.TextColor3 = Color3.fromRGB(136, 136, 136)
                             if input.UserInputType == Enum.UserInputType.Keyboard then
@@ -2982,19 +2983,13 @@ function library:CreateWindow(name, size, hidebutton)
                                 keybind:Set("None")
                             end
                         else
-                            if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
+                            if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) and uis:IsKeyDown(keybind.value) then
                                 pcall(keybind.callback)
                             end
                         end
                     end
                 end)
-                uis.InputEnded:Connect(function(input, gameProcessed)
-                    if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
-                        print("hey i worked")
-                        pcall(keybind.callback)
-                        
-                    end
-                end)
+                
                 
                 sector:FixSize()
                 table.insert(library.items, keybind)
