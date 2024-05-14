@@ -2975,6 +2975,8 @@ function library:CreateWindow(name, size, hidebutton)
                             keybind.Bind.TextColor3 = Color3.fromRGB(136, 136, 136)
                             if input.UserInputType == Enum.UserInputType.Keyboard then
                                 keybind:Set(input.KeyCode)
+                            elseif input.UserInputType == Enum.UserInputType.MouseButton2 then
+                                keybind:Set(input.UserInputType)
                             else
                                 keybind:Set("None")
                             end
