@@ -1019,7 +1019,7 @@ function library:CreateWindow(name, size, hidebutton)
                                     keybind:Set("None")
                                 end
                             else
-                                if keybind.value ~= "None" and input.KeyCode == keybind.value then
+                                if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
                                     toggle:Set(not toggle.CheckedFrame.Visible)
                                 end
                             end
@@ -2981,7 +2981,7 @@ function library:CreateWindow(name, size, hidebutton)
                                 keybind:Set("None")
                             end
                         else
-                            if keybind.value ~= "None" and input.KeyCode == keybind.value then
+                            if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
                                 pcall(keybind.callback)
                             end
                         end
