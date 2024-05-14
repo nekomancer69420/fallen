@@ -2880,18 +2880,17 @@ function library:CreateWindow(name, size, hidebutton)
                 return colorpicker
             end
 
-            function sector:AddKeybind(text, default, newkeycallback, callback, flag)
+            function sector:AddKeybind(text,default,newkeycallback,callback,flag)
                 local keybind = { }
-            
+
                 keybind.text = text or ""
                 keybind.default = default or "None"
                 keybind.callback = callback or function() end
                 keybind.newkeycallback = newkeycallback or function(key) end
                 keybind.flag = flag or text or ""
-            
+
                 keybind.value = keybind.default
-                keybind.isActive = false  -- Track the toggle state
-            
+
                 keybind.Main = Instance.new("TextLabel", sector.Items)
                 keybind.Main.BackgroundTransparency = 1
                 keybind.Main.Size = UDim2.fromOffset(156, 10)
@@ -2906,7 +2905,7 @@ function library:CreateWindow(name, size, hidebutton)
                     keybind.Main.Font = theme.font
                     keybind.Main.TextColor3 = theme.itemscolor
                 end)
-            
+
                 keybind.Bind = Instance.new("TextButton", keybind.Main)
                 keybind.Bind.Name = "keybind"
                 keybind.Bind.BackgroundTransparency = 1
@@ -2926,11 +2925,11 @@ function library:CreateWindow(name, size, hidebutton)
                     keybind.Bind.BorderColor3 = theme.outlinecolor
                     keybind.Bind.Font = theme.font
                 end)
-            
+
                 if keybind.flag and keybind.flag ~= "" then
                     library.flags[keybind.flag] = keybind.default
                 end
-            
+
                 local shorter_keycodes = {
                     ["LeftShift"] = "LSHIFT",
                     ["RightShift"] = "RSHIFT",
@@ -2939,12 +2938,12 @@ function library:CreateWindow(name, size, hidebutton)
                     ["LeftAlt"] = "LALT",
                     ["RightAlt"] = "RALT"
                 }
-            
+
                 function keybind:Set(value)
                     if value == "None" then
                         keybind.value = value
                         keybind.Bind.Text = "[" .. value .. "]"
-                        
+    
                         local size = textservice:GetTextSize(keybind.Bind.Text, keybind.Bind.TextSize, keybind.Bind.Font, Vector2.new(2000, 2000))
                         keybind.Bind.Size = UDim2.fromOffset(size.X, size.Y)
                         keybind.Bind.Position = UDim2.fromOffset(sector.Main.Size.X.Offset - 10 - keybind.Bind.AbsoluteSize.X, 0)
@@ -2953,10 +2952,10 @@ function library:CreateWindow(name, size, hidebutton)
                         end
                         pcall(keybind.newkeycallback, value)
                     end
-            
+
                     keybind.value = value
                     keybind.Bind.Text = "[" .. (shorter_keycodes[value.Name or value] or (value.Name or value)) .. "]"
-            
+
                     local size = textservice:GetTextSize(keybind.Bind.Text, keybind.Bind.TextSize, keybind.Bind.Font, Vector2.new(2000, 2000))
                     keybind.Bind.Size = UDim2.fromOffset(size.X, size.Y)
                     keybind.Bind.Position = UDim2.fromOffset(sector.Main.Size.X.Offset - 10 - keybind.Bind.AbsoluteSize.X, 0)
@@ -2966,11 +2965,11 @@ function library:CreateWindow(name, size, hidebutton)
                     pcall(keybind.newkeycallback, value)
                 end
                 keybind:Set(keybind.default and keybind.default or "None")
-            
+
                 function keybind:Get()
                     return keybind.value
                 end
-            
+
                 uis.InputBegan:Connect(function(input, gameProcessed)
                     if not gameProcessed then
                         if keybind.Bind.Text == "[...]" then
@@ -2984,29 +2983,21 @@ function library:CreateWindow(name, size, hidebutton)
                             end
                         else
                             if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
-                                keybind.isActive = not keybind.isActive  -- Toggle state
-                                if keybind.isActive then
-                                    pcall(keybind.callback)
-                                end
+                                pcall(keybind.callback)
                             end
                         end
                     end
                 end)
-            
+
                 uis.InputEnded:Connect(function(input, gameProcessed)
-                    if not gameProcessed then
-                        if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) and keybind.isActive then
-                            keybind.isActive = false
-                            pcall(keybind.callback)  -- Toggle off
-                        end
+                    if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
+                        pcall(keybind.callback)
                     end
                 end)
-            
                 sector:FixSize()
                 table.insert(library.items, keybind)
                 return keybind
             end
-            
 
             function sector:AddDropdown(text, items, default, multichoice, callback, flag)
                 local dropdown = { }
