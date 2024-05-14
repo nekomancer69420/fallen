@@ -2990,7 +2990,7 @@ function library:CreateWindow(name, size, hidebutton)
                 end)
 
                 uis.InputEnded:Connect(function(input, gameProcessed)
-                    if not gameProcessed and Holding then
+                    if not gameProcessed then
                         if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
                             pcall(keybind.callback)
                         end
