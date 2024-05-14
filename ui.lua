@@ -2983,8 +2983,8 @@ function library:CreateWindow(name, size, hidebutton)
                             end
                         else
                             if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
+                                print("hey i workedd")
                                 pcall(keybind.callback)
-                                print("hey i work")
                             end
                         end
                     end
@@ -2992,8 +2992,9 @@ function library:CreateWindow(name, size, hidebutton)
 
                 uis.InputEnded:Connect(function(input, gameProcessed)
                     if keybind.value ~= "None" and (input.KeyCode == keybind.value or input.UserInputType == keybind.value) then
-                        pcall(keybind.callback)
                         print("hey i worked")
+                        pcall(keybind.callback)
+                        
                     end
                 end)
                 sector:FixSize()
