@@ -9,9 +9,6 @@ local function saveImageFromURL(imageURL, filename)
         assert(imageContent ~= "404: Not Found", "Image not found at the provided URL")
 
         writefile(filename, imageContent)
-        rconsoleprint("Image downloaded and saved as", filename)
-    else
-        rconsoleprint("Image already exists as", filename)
     end
 end
 
