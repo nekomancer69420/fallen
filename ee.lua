@@ -1952,7 +1952,7 @@ do
 
         return Toggle;
     end;
-
+    getgenv().autodiveEnabled = true
     function Funcs:AddSlider(Idx, Info)
         assert(Info.Default, 'AddSlider: Missing default value.');
         assert(Info.Text, 'AddSlider: Missing slider text.');
